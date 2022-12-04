@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import Navbar from './Components/Navbar/Navbar'
+import { Outlet } from 'react-router-dom'
 
 
 function App() {
@@ -8,6 +9,7 @@ function App() {
   return (
     <div className="App">
       <Navbar />
+      <Outlet />
     </div>
   )
 }

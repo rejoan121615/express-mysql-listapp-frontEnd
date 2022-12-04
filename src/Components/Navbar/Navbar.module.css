@@ -7,5 +7,5 @@
 }
 
 .nav__link {
-  @apply text-base font-sans text-black ;
+  @apply text-base font-sans text-black capitalize ;
 }
