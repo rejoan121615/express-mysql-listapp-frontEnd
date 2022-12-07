@@ -2,8 +2,29 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer {
+@layer components {
     .pageHeight {
         @apply h-[calc(100vh_-_42px)];
+    }
+    form {
+        @apply w-full flex flex-col gap-y-4;
+    }
+    .inputWrap {
+        @apply flex flex-col gap-y-1 w-full;
+    }
+    .label {
+        @apply capitalize font-sans font-medium;
+    }
+
+    .input {
+        @apply border-[1px] border-black rounded-md py-[6px] px-2 w-full;
+    }
+
+    .btn-primary {
+        @apply font-sans font-medium uppercase bg-slate-600 text-white px-5 py-3 inline-block rounded-md cursor-pointer;
+    }
+
+    .btn-submit {
+        @apply btn-primary mt-3;
     }
 }

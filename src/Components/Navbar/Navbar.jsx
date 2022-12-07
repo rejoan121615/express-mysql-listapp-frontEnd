@@ -9,7 +9,7 @@ const Navbar = () => {
                 {/* brand logo      */}
 
                 <h3 className=" text-4xl text-red-900 uppercase font-sans">
-                    <Link to={'/home'}>record</Link>
+                    <Link to={'/'}>record</Link>
                 </h3>
                 {/* navigation  */}
                 <ul className={Classess.nav}>

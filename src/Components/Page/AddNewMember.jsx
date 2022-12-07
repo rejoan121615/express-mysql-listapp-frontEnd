@@ -1,32 +1,49 @@
 import React, { useState } from "react";
-import { Form } from "react-router-dom";
-import Classess from "./AddNewMember.module.css";
-import  useInput  from "../../Hooks/useInput";
+import useInput from "../../Hooks/useInput";
 
 const AddNewMember = () => {
-    // const [name, setName] = useState('');
-
-    // const namecus = useInput();
-    // console.log(namecus.value)
-
-    // const nameChangeHandler = (e) => {
-    //     setName( () => e.target.value);
-    // };
-
-
-    const [name, nameHandler] = useInput()
+    const [name, nameHandler] = useInput();
     const [email, emailHandler] = useInput();
     const [phoneNumber, phoneNumberHandler] = useInput();
     const [file, fileHandler] = useInput();
 
+    const submitHandler = (e) => {
+        e.preventDefault();
+
+        const userData = {
+            name,
+            email,
+            phoneNumber,
+            file,
+        };
+
+        // post data
+        const myHeader = new Headers();
+        myHeader.append("Content-type", "application/json");
+
+        fetch("http://localhost:3005/new-user", {
+            method: "POST",
+            headers: myHeader,
+            body: JSON.stringify(userData),
+            redirect: "follow",
+        })
+            .then((data) => {
+                console.log(data);
+            })
+            .catch((error) => {
+                console.log("got an error");
+            });
+    };
+
     return (
         <div className=" h-pageHeight">
-            <div className=" w-[400px] mx-auto flex items-center justify-center h-full ">
-                <Form
+            {/* <div className=" w-[400px] mx-auto flex items-center justify-center h-full ">
+                <form
                     method="post"
                     encType="multipart/form-data"
                     action="success"
                     className=" w-full grid grid-cols-1 gap-y-4 "
+                    onSubmit={submitHandler}
                 >
                     <div className=" flex flex-col gap-y-2 ">
                         <label className={Classess.label} htmlFor="name">
@@ -79,7 +96,7 @@ const AddNewMember = () => {
                             onChange={fileHandler}
                         />
                     </div>
-                    {/* submit btn  */}
+
                     <div>
                         <input
                             type="submit"
@@ -89,8 +106,8 @@ const AddNewMember = () => {
                               rounded-md "
                         />
                     </div>
-                </Form>
-            </div>
+                </form>
+            </div> */}
         </div>
     );
 };
